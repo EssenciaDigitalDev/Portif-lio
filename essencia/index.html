@@ -453,12 +453,31 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 .sol-card p{ font-size:13.5px; color:var(--text-2); line-height:1.55; }
 
 /* ==========================================================================
-   7. SEGMENTS
+   7. SEGMENTS — INFINITE MARQUEE CAROUSEL
    ========================================================================== */
-.seg-grid{ display:grid; grid-template-columns:repeat(7,1fr); gap:16px; }
-@media (max-width:940px){ .seg-grid{ grid-template-columns:repeat(4,1fr); } }
-@media (max-width:560px){ .seg-grid{ grid-template-columns:repeat(2,1fr); } }
+.seg-marquee{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+.seg-track{
+  display:flex;
+  width:max-content;
+  gap:16px;
+  animation:segScroll 42s linear infinite;
+}
+.seg-marquee:hover .seg-track{ animation-play-state:running; }
+
+@keyframes segScroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
 .seg-card{
+  flex:0 0 auto;
+  width:168px;
   padding:26px 16px; border-radius:var(--radius-m); text-align:center;
   transition:transform .35s var(--ease), background .35s;
 }
@@ -468,6 +487,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
 }
 .seg-card .ico svg{ width:100%; height:100%; }
 .seg-card span{ font-size:13px; font-weight:500; color:var(--text-2); }
+
+@media (max-width:560px){
+  .seg-card{ width:140px; padding:20px 12px; }
+}
 
 /* ==========================================================================
    8. PORTFOLIO
@@ -675,11 +698,11 @@ footer{ padding:80px 0 32px; border-top:1px solid var(--border); }
         <a href="#cta-final" class="btn btn-primary"><span class="ripple"></span>Solicitar orçamento</a>
         <a href="#solucoes" class="btn btn-ghost">Conhecer soluções</a>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat"><div class="num" data-count="120">0</div><div class="label">Projetos entregues</div></div>
+      <!--<div class="hero-stats">
+         <div class="hero-stat"><div class="num" data-count="120">0</div><div class="label">Projetos entregues</div></div>
         <div class="hero-stat"><div class="num" data-count="15">0</div><div class="label">Anos de experiência</div></div>
         <div class="hero-stat"><div class="num" data-count="42" data-suffix="%">0%</div><div class="label">Ganho médio de produtividade</div></div>
-      </div>
+      </div> -->
     </div>
 
     <div class="hero-art reveal is-visible reveal-delay-2" aria-hidden="true">
@@ -828,35 +851,132 @@ footer{ padding:80px 0 32px; border-top:1px solid var(--border); }
       <div class="eyebrow" style="justify-content:center; display:inline-flex; width:100%;">Quem atendemos</div>
       <h2>Tecnologia para todo tipo de operação.</h2>
     </div>
+  </div>
 
-    <div class="seg-grid">
-      <div class="seg-card glass reveal">
+  <div class="seg-marquee reveal">
+    <div class="seg-track" id="seg-track">
+      <!-- ESSE GRUPO SE REPETE 2X PARA O LOOP SER CONTÍNUO -->
+      <div class="seg-card glass">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3v18M4 3h4v6H4M20 3v18M8 21V11h8v10"/></svg></div>
         <span>Restaurantes</span>
       </div>
-      <div class="seg-card glass reveal reveal-delay-1">
+      <div class="seg-card glass">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l1-5h16l1 5M4 9h16v11H4zM9 13v4"/></svg></div>
         <span>Lanchonetes</span>
       </div>
-      <div class="seg-card glass reveal reveal-delay-2">
+      <div class="seg-card glass">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l2-6h14l2 6M4 9v11h16V9M9 21v-6h6v6"/></svg></div>
         <span>Mercados</span>
       </div>
-      <div class="seg-card glass reveal reveal-delay-3">
+      <div class="seg-card glass">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="8" width="15" height="9"/><path d="M16 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></div>
         <span>Distribuidoras</span>
       </div>
-      <div class="seg-card glass reveal reveal-delay-4">
+      <div class="seg-card glass">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
         <span>Comércio</span>
       </div>
-      <div class="seg-card glass reveal reveal-delay-5">
+      <div class="seg-card glass">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6C19 16.4 12 21 12 21z"/></svg></div>
         <span>Clínicas</span>
       </div>
-      <div class="seg-card glass reveal">
+      <div class="seg-card glass">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></div>
         <span>Prestadores de Serviços</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg></div>
+        <span>Academias</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
+        <span>Escritórios de Advocacia</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4"/></svg></div>
+        <span>Óticas</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l1 4-3 2 3 4-3 2 2 8H9l2-8-3-2 3-4-3-2z"/></svg></div>
+        <span>Farmácias</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M12 22c-3 0-5-2-5-5 0-2 2-4 5-4s5 2 5 4c0 3-2 5-5 5z"/></svg></div>
+        <span>Pet Shops</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-6 9 6v11M9 21v-6h6v6"/></svg></div>
+        <span>Imobiliárias</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l6-4 6 4v14M9 21v-4h6v4"/></svg></div>
+        <span>Salões de Beleza</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V9l6-4 6 4v12M15 21V13l6-2v10"/></svg></div>
+        <span>Construtoras</span>
+      </div>
+
+      <!-- DUPLICATA DO GRUPO ACIMA (necessária para o loop contínuo — não remover) -->
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3v18M4 3h4v6H4M20 3v18M8 21V11h8v10"/></svg></div>
+        <span>Restaurantes</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l1-5h16l1 5M4 9h16v11H4zM9 13v4"/></svg></div>
+        <span>Lanchonetes</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l2-6h14l2 6M4 9v11h16V9M9 21v-6h6v6"/></svg></div>
+        <span>Mercados</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="8" width="15" height="9"/><path d="M16 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></div>
+        <span>Distribuidoras</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+        <span>Comércio</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6C19 16.4 12 21 12 21z"/></svg></div>
+        <span>Clínicas</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></div>
+        <span>Prestadores de Serviços</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg></div>
+        <span>Academias</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
+        <span>Escritórios de Advocacia</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4"/></svg></div>
+        <span>Óticas</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l1 4-3 2 3 4-3 2 2 8H9l2-8-3-2 3-4-3-2z"/></svg></div>
+        <span>Farmácias</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M12 22c-3 0-5-2-5-5 0-2 2-4 5-4s5 2 5 4c0 3-2 5-5 5z"/></svg></div>
+        <span>Pet Shops</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-6 9 6v11M9 21v-6h6v6"/></svg></div>
+        <span>Imobiliárias</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l6-4 6 4v14M9 21v-4h6v4"/></svg></div>
+        <span>Salões de Beleza</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V9l6-4 6 4v12M15 21V13l6-2v10"/></svg></div>
+        <span>Construtoras</span>
       </div>
     </div>
   </div>
@@ -958,7 +1078,7 @@ footer{ padding:80px 0 32px; border-top:1px solid var(--border); }
         <li>Ganhe produtividade</li>
         <li>Cresça com tecnologia</li>
       </ul>
-      <a href="#" class="btn btn-primary" style="padding:16px 34px; font-size:15.5px;"><span class="ripple"></span>Solicitar Diagnóstico</a>
+      <a href="https://wa.me/5565996833769?text=Olá!%20Gostaria%20de%20conhecer%20as%20soluções%20da%20Essência%20Digital%20e%20solicitar%20uma%20reunião." class="btn btn-primary" style="padding:16px 34px; font-size:15.5px;"><span class="ripple"></span>Solicitar Diagnóstico</a>
     </div>
   </div>
 </section>
@@ -987,7 +1107,7 @@ footer{ padding:80px 0 32px; border-top:1px solid var(--border); }
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li><a href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="https://wa.me/5565996833769" target="_blank" rel="noopener">WhatsApp</a></li>
           <li><a href="mailto:essenciadigitalgestao@gmail.com">essenciadigitalgestao@gmail.com</a></li>
           <li><a href="https://instagram.com/essencia__digital" target="_blank" rel="noopener">@essencia__digital</a></li>
         </ul>
@@ -995,7 +1115,7 @@ footer{ padding:80px 0 32px; border-top:1px solid var(--border); }
       <div class="footer-col">
         <h4>Endereço</h4>
         <ul>
-          <li style="color:var(--text-2);">Atendimento em todo o Brasil, 100% remoto.</li>
+          <li style="color:var(--text-2);">Atendimento em todo o Brasil.</li>
         </ul>
       </div>
     </div>
@@ -1004,7 +1124,7 @@ footer{ padding:80px 0 32px; border-top:1px solid var(--border); }
       <span>© <span id="year"></span> Essência Digital. Todos os direitos reservados.</span>
       <div class="footer-social">
         <a href="https://instagram.com/essencia__digital" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
-        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg></a>
+        <a href="https://wa.me/5565996833769" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg></a>
         <a href="mailto:essenciadigitalgestao@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
       </div>
     </div>
