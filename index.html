@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Essência Digital — Tecnologia que impulsiona empresas</title>
+<meta name="description" content="Desenvolvemos Landing Pages, Sistemas Web, Automação de Processos, IA e Dashboards que eliminam trabalho manual e aceleram o crescimento do seu negócio.">
+<meta name="keywords" content="automação de processos, sistemas web, dashboards, integração ERP, inteligência artificial, automação whatsapp, software house">
+<meta name="author" content="Essência Digital">
+<meta name="theme-color" content="#050810">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Essência Digital — Tecnologia que impulsiona empresas">
+<meta property="og:description" content="Sistemas Web, Automação de Processos, IA e Dashboards sob medida para o seu negócio.">
+<meta property="og:image" content="logo.png">
+<meta property="og:locale" content="pt_BR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Essência Digital — Tecnologia que impulsiona empresas">
+<meta name="twitter:description" content="Sistemas Web, Automação de Processos, IA e Dashboards sob medida para o seu negócio.">
+<meta name="twitter:image" content="logo.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Essência Digital",
+  "description": "Software house especializada em sistemas web, automação de processos, inteligência artificial e dashboards.",
+  "logo": "logo.png",
+  "sameAs": []
+}
+</script>
+
+<!-- Fonts: Inter (display/body) + JetBrains Mono (utility/labels) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ==========================================================================
+   0. DESIGN TOKENS
+   ========================================================================== */
+:root{
+  /* surfaces */
+  --bg:            #05070d;
+  --bg-soft:       #080b15;
+  --bg-elevated:   #0c1220;
+  --surface:       rgba(255,255,255,.045);
+  --surface-hover: rgba(255,255,255,.075);
+  --border:        rgba(255,255,255,.09);
+  --border-strong: rgba(255,255,255,.18);
+
+  /* brand */
+  --blue-900:  #071230;
+  --blue-700:  #123a8f;
+  --blue-500:  #2f6bff;
+  --blue-400:  #6a95ff;
+  --orange-600:#d95a12;
+  --orange-500:#ff7a29;
+  --orange-400:#ffa15c;
+
+  /* text */
+  --text-1: #f3f5fb;
+  --text-2: #9aa3ba;
+  --text-3: #565f76;
+
+  /* type */
+  --font-display: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* geometry */
+  --radius-s: 10px;
+  --radius-m: 18px;
+  --radius-l: 28px;
+  --ease: cubic-bezier(.16,.8,.24,1);
+  --container: 1200px;
+}
+
+/* ==========================================================================
+   1. RESET & BASE
+   ========================================================================== */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{
+  background:var(--bg);
+  color:var(--text-1);
+  font-family:var(--font-display);
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+ul{ list-style:none; }
+::selection{ background:var(--orange-500); color:#0a0a0a; }
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible{
+  outline:2px solid var(--orange-500);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+.container{ max-width:var(--container); margin:0 auto; padding:0 32px; }
+.section{ position:relative; padding:140px 0; }
+.section--tight{ padding:100px 0; }
+
+@media (max-width:768px){
+  .section{ padding:88px 0; }
+  .section--tight{ padding:64px 0; }
+  .container{ padding:0 20px; }
+}
+
+/* eyebrow / label */
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-mono);
+  font-size:12px; font-weight:500; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--orange-400);
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:var(--orange-500);
+  box-shadow:0 0 12px var(--orange-500);
+}
+
+.section-head{ max-width:640px; margin-bottom:64px; }
+.section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
+.section-head h2{
+  font-size:clamp(30px,4vw,44px);
+  font-weight:700;
+  letter-spacing:-.02em;
+  line-height:1.15;
+  margin-bottom:16px;
+}
+.section-head p{ color:var(--text-2); font-size:17px; }
+
+/* gradient text */
+.grad-text{
+  background:linear-gradient(90deg,var(--blue-400),var(--orange-400));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+
+/* glass surface */
+.glass{
+  background:var(--surface);
+  border:1px solid var(--border);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+
+/* buttons */
+.btn{
+  position:relative;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:14px 28px;
+  border-radius:99px;
+  font-size:14.5px; font-weight:600;
+  overflow:hidden;
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  white-space:nowrap;
+}
+.btn:active{ transform:scale(.97); }
+.btn-primary{
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue-500),var(--orange-500));
+  box-shadow:0 8px 30px -8px rgba(255,122,41,.45);
+}
+.btn-primary:hover{ transform:translateY(-2px); box-shadow:0 14px 36px -8px rgba(255,122,41,.6); }
+.btn-primary .ripple{
+  position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:radial-gradient(circle at var(--x,50%) var(--y,50%), rgba(255,255,255,.35), transparent 60%);
+  opacity:0; transition:opacity .4s;
+}
+.btn-primary:hover .ripple{ opacity:1; }
+
+.btn-ghost{
+  color:var(--text-1);
+  border:1px solid var(--border-strong);
+  background:rgba(255,255,255,.02);
+}
+.btn-ghost:hover{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.3); transform:translateY(-2px); }
+
+/* scroll reveal */
+.reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-visible{ opacity:1; transform:translateY(0); }
+.reveal-delay-1{ transition-delay:.08s; }
+.reveal-delay-2{ transition-delay:.16s; }
+.reveal-delay-3{ transition-delay:.24s; }
+.reveal-delay-4{ transition-delay:.32s; }
+.reveal-delay-5{ transition-delay:.4s; }
+
+/* ==========================================================================
+   2. SCROLL PROGRESS + CURSOR GLOW
+   ========================================================================== */
+#scroll-progress{
+  position:fixed; top:0; left:0; height:2px; width:0%;
+  background:linear-gradient(90deg,var(--blue-500),var(--orange-500));
+  z-index:9999; transition:width .1s linear;
+}
+
+#cursor-glow{
+  position:fixed; top:0; left:0; width:520px; height:520px;
+  border-radius:50%; pointer-events:none; z-index:1;
+  background:radial-gradient(circle, rgba(47,107,255,.10), rgba(255,122,41,.05) 45%, transparent 70%);
+  transform:translate(-50%,-50%);
+  transition:opacity .3s;
+  will-change:transform;
+}
+@media (max-width:900px){ #cursor-glow{ display:none; } }
+
+/* ==========================================================================
+   3. NAVBAR
+   ========================================================================== */
+#navbar{
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  padding:22px 0;
+  transition:padding .4s var(--ease), background .4s var(--ease), border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+#navbar.scrolled{
+  padding:14px 0;
+  background:rgba(5,7,13,.72);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border-bottom-color:var(--border);
+}
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; gap:24px; }
+.nav-logo{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:16.5px; letter-spacing:-.01em; }
+.nav-logo img{ width:34px; height:34px; border-radius:9px; }
+.nav-logo span em{ font-style:normal; color:var(--orange-400); }
+
+.nav-links{ display:flex; align-items:center; gap:36px; }
+.nav-links a{
+  font-size:14px; font-weight:500; color:var(--text-2);
+  position:relative; transition:color .25s;
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:-6px; width:0; height:1px;
+  background:linear-gradient(90deg,var(--blue-400),var(--orange-400));
+  transition:width .3s var(--ease);
+}
+.nav-links a:hover{ color:var(--text-1); }
+.nav-links a:hover::after{ width:100%; }
+
+.nav-actions{ display:flex; align-items:center; gap:16px; }
+.nav-cta{ display:inline-flex; }
+.nav-toggle{ display:none; width:34px; height:34px; flex-direction:column; justify-content:center; gap:5px; }
+.nav-toggle span{ width:100%; height:2px; background:var(--text-1); border-radius:2px; transition:transform .3s, opacity .3s; }
+
+@media (max-width:920px){
+  .nav-links{ display:none; }
+  .nav-cta{ display:none; }
+  .nav-toggle{ display:flex; }
+}
+
+/* mobile menu */
+#mobile-menu{
+  position:fixed; inset:0; z-index:999;
+  background:rgba(5,7,13,.98);
+  backdrop-filter:blur(10px);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+  opacity:0; pointer-events:none; transition:opacity .35s var(--ease);
+}
+#mobile-menu.open{ opacity:1; pointer-events:auto; }
+#mobile-menu a{ font-size:22px; font-weight:600; }
+
+/* ==========================================================================
+   4. HERO
+   ========================================================================== */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding:160px 0 100px;
+  overflow:hidden;
+}
+#hero-canvas{ position:absolute; inset:0; z-index:0; opacity:.55; }
+
+.hero::before{ /* radial ambient glow */
+  content:''; position:absolute; top:-10%; left:50%; width:1100px; height:1100px;
+  background:radial-gradient(circle, rgba(47,107,255,.16), transparent 60%);
+  transform:translateX(-50%); pointer-events:none; z-index:0;
+}
+.hero::after{
+  content:''; position:absolute; bottom:-20%; right:-10%; width:700px; height:700px;
+  background:radial-gradient(circle, rgba(255,122,41,.12), transparent 65%);
+  pointer-events:none; z-index:0;
+}
+.hero-grid{
+  position:absolute; inset:0; z-index:0; opacity:.35;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size:56px 56px;
+  mask-image:radial-gradient(ellipse 70% 60% at 50% 30%, black 40%, transparent 90%);
+}
+
+.hero-inner{
+  position:relative; z-index:2;
+  display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center;
+}
+@media (max-width:980px){ .hero-inner{ grid-template-columns:1fr; } }
+
+.hero-copy h1{
+  font-size:clamp(38px,5.4vw,64px);
+  font-weight:800; letter-spacing:-.03em; line-height:1.06;
+  margin-bottom:22px;
+}
+.hero-copy p{
+  font-size:18px; color:var(--text-2); max-width:520px; margin-bottom:36px;
+}
+.hero-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px; }
+
+.hero-stats{ display:flex; gap:44px; flex-wrap:wrap; }
+.hero-stat .num{
+  font-family:var(--font-mono); font-size:28px; font-weight:600;
+  background:linear-gradient(90deg,var(--blue-400),var(--orange-400));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.hero-stat .label{ font-size:13px; color:var(--text-3); margin-top:4px; }
+
+/* hero illustration: layered glass "control panel" composition */
+.hero-art{ position:relative; height:520px; }
+@media (max-width:980px){ .hero-art{ height:380px; margin-top:20px; } }
+
+.hero-art .panel{
+  position:absolute; border-radius:var(--radius-m);
+  animation:float 7s ease-in-out infinite;
+}
+.panel-main{
+  width:78%; height:60%; top:16%; left:8%;
+  background:linear-gradient(160deg, rgba(47,107,255,.16), rgba(255,255,255,.02));
+  border:1px solid var(--border-strong);
+  backdrop-filter:blur(16px);
+  box-shadow:0 30px 80px -20px rgba(0,0,0,.6);
+  padding:22px;
+  display:flex; flex-direction:column; gap:12px;
+}
+.panel-main .bars{ display:flex; align-items:flex-end; gap:8px; height:96px; margin-top:auto; }
+.panel-main .bar{ flex:1; border-radius:6px 6px 0 0; background:linear-gradient(180deg,var(--blue-400),var(--blue-700)); animation:barGrow 2.4s var(--ease) infinite alternate; }
+.panel-main .bar:nth-child(2n){ background:linear-gradient(180deg,var(--orange-400),var(--orange-600)); animation-delay:.3s; }
+.panel-main .bar:nth-child(3n){ animation-delay:.6s; }
+
+.panel-badge{
+  position:absolute; padding:10px 16px; border-radius:99px;
+  font-family:var(--font-mono); font-size:12.5px; font-weight:500;
+  display:flex; align-items:center; gap:8px;
+  background:rgba(12,18,32,.85); border:1px solid var(--border-strong);
+  box-shadow:0 14px 30px -10px rgba(0,0,0,.55);
+  animation:float 6s ease-in-out infinite;
+}
+.panel-badge::before{ content:''; width:7px; height:7px; border-radius:50%; background:var(--orange-500); box-shadow:0 0 10px var(--orange-500); }
+.badge-1{ top:2%; right:2%; animation-delay:.4s; }
+.badge-2{ bottom:20%; left:-4%; animation-delay:1.2s; }
+.badge-2::before{ background:var(--blue-400); box-shadow:0 0 10px var(--blue-400); }
+.badge-3{ bottom:2%; right:14%; animation-delay:.8s; }
+
+.hero-art .ring{
+  position:absolute; border:1px solid rgba(255,255,255,.08); border-radius:50%;
+}
+.ring-1{ width:340px; height:340px; top:6%; right:-8%; animation:spin 30s linear infinite; }
+.ring-2{ width:200px; height:200px; bottom:-4%; left:0%; animation:spin 22s linear infinite reverse; }
+
+@keyframes float{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-14px); } }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+@keyframes barGrow{ from{ height:20%; } to{ height:100%; } }
+
+.scroll-cue{
+  position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--text-3);
+  z-index:2;
+}
+.scroll-cue .line{ width:1px; height:30px; background:linear-gradient(var(--text-3),transparent); animation:scrollCue 2s ease-in-out infinite; }
+@keyframes scrollCue{ 0%{ transform:scaleY(0); transform-origin:top; } 50%{ transform:scaleY(1); transform-origin:top; } 51%{ transform-origin:bottom; } 100%{ transform:scaleY(0); transform-origin:bottom; } }
+
+/* ==========================================================================
+   5. PROBLEM -> FLOW SECTION
+   ========================================================================== */
+.problem-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+@media (max-width:900px){ .problem-wrap{ grid-template-columns:1fr; gap:48px; } }
+
+.problem-list{ display:flex; flex-direction:column; gap:14px; }
+.problem-item{
+  display:flex; align-items:center; gap:14px;
+  padding:16px 18px; border-radius:var(--radius-s);
+  background:rgba(255,60,60,.045); border:1px solid rgba(255,90,90,.15);
+  font-size:15px; color:#d7dbe8;
+  transition:transform .3s var(--ease);
+}
+.problem-item:hover{ transform:translateX(6px); }
+.problem-item .x{
+  flex-shrink:0; width:26px; height:26px; border-radius:50%;
+  background:rgba(255,70,70,.15); color:#ff7a7a;
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700;
+}
+
+.flow-col{ display:flex; flex-direction:column; align-items:center; gap:0; position:relative; }
+.flow-step{
+  width:100%; max-width:320px;
+  display:flex; align-items:center; gap:14px;
+  padding:14px 18px; border-radius:var(--radius-s);
+  background:linear-gradient(120deg, rgba(47,107,255,.1), rgba(255,122,41,.06));
+  border:1px solid var(--border-strong);
+  font-weight:600; font-size:14.5px;
+  position:relative; z-index:1;
+}
+.flow-step .ico{ width:30px; height:30px; flex-shrink:0; }
+.flow-arrow{ padding:6px 0; color:var(--text-3); }
+.flow-arrow svg{ animation:flowPulse 1.6s ease-in-out infinite; }
+@keyframes flowPulse{ 0%,100%{ opacity:.35; transform:translateY(0);} 50%{ opacity:1; transform:translateY(3px);} }
+.flow-final{
+  background:linear-gradient(135deg,var(--blue-500),var(--orange-500));
+  color:#fff; text-align:center; justify-content:center;
+}
+
+/* ==========================================================================
+   6. SOLUTIONS GRID
+   ========================================================================== */
+.solutions-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+@media (max-width:1000px){ .solutions-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .solutions-grid{ grid-template-columns:1fr; } }
+
+.sol-card{
+  padding:28px 24px; border-radius:var(--radius-m);
+  position:relative; overflow:hidden;
+  transition:transform .4s var(--ease), border-color .4s var(--ease), background .4s var(--ease);
+}
+.sol-card:hover{ transform:translateY(-6px); border-color:var(--border-strong); background:var(--surface-hover); }
+.sol-card .ico-wrap{
+  width:46px; height:46px; border-radius:12px; margin-bottom:20px;
+  display:flex; align-items:center; justify-content:center;
+  background:linear-gradient(135deg, rgba(47,107,255,.22), rgba(255,122,41,.14));
+  border:1px solid var(--border-strong);
+  transition:transform .4s var(--ease);
+}
+.sol-card:hover .ico-wrap{ transform:scale(1.08) rotate(-4deg); }
+.sol-card .ico-wrap svg{ width:22px; height:22px; stroke:var(--text-1); }
+.sol-card h3{ font-size:16.5px; font-weight:600; margin-bottom:8px; }
+.sol-card p{ font-size:13.5px; color:var(--text-2); line-height:1.55; }
+
+/* ==========================================================================
+   7. SEGMENTS — INFINITE MARQUEE CAROUSEL
+   ========================================================================== */
+.seg-marquee{
+  position:relative;
+  width:100%;
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image:linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+.seg-track{
+  display:flex;
+  width:max-content;
+  gap:16px;
+  animation:segScroll 42s linear infinite;
+}
+.seg-marquee:hover .seg-track{ animation-play-state:running; }
+
+@keyframes segScroll{
+  from{ transform:translateX(0); }
+  to{ transform:translateX(-50%); }
+}
+
+.seg-card{
+  flex:0 0 auto;
+  width:168px;
+  padding:26px 16px; border-radius:var(--radius-m); text-align:center;
+  transition:transform .35s var(--ease), background .35s;
+}
+.seg-card:hover{ transform:translateY(-4px); background:var(--surface-hover); }
+.seg-card .ico{
+  width:40px; height:40px; margin:0 auto 14px; color:var(--orange-400);
+}
+.seg-card .ico svg{ width:100%; height:100%; }
+.seg-card span{ font-size:13px; font-weight:500; color:var(--text-2); }
+
+@media (max-width:560px){
+  .seg-card{ width:140px; padding:20px 12px; }
+}
+
+/* ==========================================================================
+   8. PORTFOLIO
+   ========================================================================== */
+.portfolio-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+@media (max-width:900px){ .portfolio-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .portfolio-grid{ grid-template-columns:1fr; } }
+
+.port-card{
+  position:relative; border-radius:var(--radius-m); overflow:hidden;
+  aspect-ratio:4/3; border:1px solid var(--border);
+  cursor:pointer;
+}
+.port-card .thumb{
+  position:absolute; inset:0; z-index:0;
+  width:100%; height:100%; object-fit:cover; object-position:top center;
+  background:var(--bg-elevated);
+  transition:transform .6s var(--ease);
+}
+.port-card:hover .thumb{ transform:scale(1.08); }
+.port-overlay{
+  position:absolute; inset:0; z-index:2;
+  display:flex; flex-direction:column; justify-content:flex-end; gap:6px;
+  padding:22px;
+  background:linear-gradient(180deg, transparent 40%, rgba(4,6,12,.92) 100%);
+  opacity:0; transition:opacity .4s var(--ease);
+}
+.port-card:hover .port-overlay{ opacity:1; }
+.port-tag{ font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--orange-400); }
+.port-overlay h4{ font-size:17px; font-weight:600; }
+
+/* ==========================================================================
+   9. TIMELINE (COMO TRABALHAMOS)
+   ========================================================================== */
+.timeline{ position:relative; display:flex; flex-direction:column; gap:0; }
+.timeline::before{
+  content:''; position:absolute; left:23px; top:8px; bottom:8px; width:1px;
+  background:linear-gradient(var(--blue-500), var(--orange-500));
+  opacity:.4;
+}
+@media (max-width:700px){ .timeline::before{ left:19px; } }
+
+.tl-item{ display:flex; gap:26px; padding:26px 0; }
+.tl-num{
+  flex-shrink:0; width:48px; height:48px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-weight:600; font-size:15px;
+  background:var(--bg-elevated); border:1px solid var(--border-strong);
+  position:relative; z-index:1;
+}
+@media (max-width:700px){ .tl-num{ width:40px; height:40px; font-size:13px; } }
+.tl-body h3{ font-size:18px; font-weight:600; margin-bottom:6px; }
+.tl-body p{ color:var(--text-2); font-size:14.5px; max-width:520px; }
+
+/* ==========================================================================
+   10. DIFFERENTIALS
+   ========================================================================== */
+.diff-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+@media (max-width:900px){ .diff-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){ .diff-grid{ grid-template-columns:1fr; } }
+.diff-card{
+  padding:26px; border-radius:var(--radius-m);
+  display:flex; flex-direction:column; gap:14px;
+  transition:transform .35s var(--ease), background .35s;
+}
+.diff-card:hover{ transform:translateY(-4px); background:var(--surface-hover); }
+.diff-card .n{ font-family:var(--font-mono); font-size:12px; color:var(--orange-400); letter-spacing:.08em; }
+.diff-card h3{ font-size:16px; font-weight:600; }
+.diff-card p{ font-size:13.5px; color:var(--text-2); }
+
+/* ==========================================================================
+   11. CTA FINAL
+   ========================================================================== */
+.cta-final{ position:relative; overflow:hidden; }
+.cta-box{
+  position:relative; border-radius:32px; overflow:hidden;
+  padding:90px 40px; text-align:center;
+  background:linear-gradient(135deg, rgba(47,107,255,.16), rgba(255,122,41,.10));
+  border:1px solid var(--border-strong);
+}
+.cta-box::before{
+  content:''; position:absolute; inset:0; z-index:0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(47,107,255,.28), transparent 45%),
+    radial-gradient(circle at 80% 80%, rgba(255,122,41,.24), transparent 45%);
+  animation:ctaGlow 8s ease-in-out infinite alternate;
+}
+@keyframes ctaGlow{ from{ opacity:.7; } to{ opacity:1; } }
+.cta-box > *{ position:relative; z-index:1; }
+.cta-box h2{ font-size:clamp(28px,4vw,44px); font-weight:800; letter-spacing:-.02em; margin-bottom:18px; }
+.cta-box p{ color:var(--text-2); font-size:16px; max-width:520px; margin:0 auto 34px; }
+.cta-list{ display:flex; gap:22px; flex-wrap:wrap; justify-content:center; margin-bottom:36px; font-size:14px; color:var(--text-2); }
+.cta-list li::before{ content:'— '; color:var(--orange-400); }
+
+/* ==========================================================================
+   12. FOOTER
+   ========================================================================== */
+footer{ padding:80px 0 32px; border-top:1px solid var(--border); }
+.footer-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:60px; }
+@media (max-width:800px){ .footer-top{ grid-template-columns:1fr 1fr; } }
+@media (max-width:520px){ .footer-top{ grid-template-columns:1fr; } }
+.footer-brand .nav-logo{ margin-bottom:14px; }
+.footer-brand p{ color:var(--text-3); font-size:13.5px; max-width:280px; }
+.footer-col h4{ font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); margin-bottom:16px; }
+.footer-col ul{ display:flex; flex-direction:column; gap:10px; }
+.footer-col a{ font-size:14px; color:var(--text-2); transition:color .25s; }
+.footer-col a:hover{ color:var(--orange-400); }
+.footer-bottom{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  padding-top:28px; border-top:1px solid var(--border);
+  font-size:12.5px; color:var(--text-3);
+}
+.footer-social{ display:flex; gap:12px; }
+.footer-social a{
+  width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--border); transition:border-color .3s, transform .3s, color .3s;
+}
+.footer-social a:hover{ border-color:var(--orange-500); color:var(--orange-400); transform:translateY(-3px); }
+.footer-social svg{ width:16px; height:16px; }
+
+/* ==========================================================================
+   13. BACK TO TOP
+   ========================================================================== */
+#back-to-top{
+  position:fixed; bottom:28px; right:28px; z-index:900;
+  width:48px; height:48px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--bg-elevated); border:1px solid var(--border-strong);
+  opacity:0; visibility:hidden; transform:translateY(10px);
+  transition:opacity .35s var(--ease), transform .35s var(--ease), visibility .35s;
+  box-shadow:0 12px 30px -8px rgba(0,0,0,.5);
+}
+#back-to-top.show{ opacity:1; visibility:visible; transform:translateY(0); }
+#back-to-top:hover{ border-color:var(--orange-500); }
+#back-to-top svg{ width:18px; height:18px; }
+
+/* skip link */
+.skip-link{
+  position:fixed; top:-100px; left:16px; z-index:99999;
+  background:var(--orange-500); color:#0a0a0a; padding:10px 16px; border-radius:8px;
+  font-weight:600; font-size:13px; transition:top .25s;
+}
+.skip-link:focus{ top:16px; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Pular para o conteúdo</a>
+
+<!-- scroll progress -->
+<div id="scroll-progress"></div>
+<div id="cursor-glow" aria-hidden="true"></div>
+
+<!-- ==========================================================================
+     NAVBAR
+     ========================================================================== -->
+<header id="navbar">
+  <div class="container nav-inner">
+    <a href="#main" class="nav-logo" aria-label="Essência Digital — início">
+      <img src="logo.png" alt="Logotipo Essência Digital">
+      <span>Essência <em>Digital</em></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navegação principal">
+      <a href="#solucoes">Soluções</a>
+      <a href="#segmentos">Segmentos</a>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#como-trabalhamos">Como trabalhamos</a>
+      <a href="#diferenciais">Diferenciais</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#cta-final" class="btn btn-primary nav-cta"><span class="ripple"></span>Solicitar orçamento</a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div id="mobile-menu">
+  <a href="#solucoes">Soluções</a>
+  <a href="#segmentos">Segmentos</a>
+  <a href="#portfolio">Portfólio</a>
+  <a href="#como-trabalhamos">Como trabalhamos</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="#cta-final" class="btn btn-primary" style="margin-top:14px;"><span class="ripple"></span>Solicitar orçamento</a>
+</div>
+
+<main id="main">
+
+<!-- ==========================================================================
+     HERO
+     ========================================================================== -->
+<section class="hero">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-copy reveal is-visible">
+      <div class="eyebrow">Software House</div>
+      <h1>Tecnologia que impulsiona empresas.</h1>
+      <p>Desenvolvemos Landing Pages, Sistemas Web e Soluções Inteligentes que automatizam processos e aceleram o crescimento do seu negócio.</p>
+      <div class="hero-actions">
+        <a href="#cta-final" class="btn btn-primary"><span class="ripple"></span>Solicitar orçamento</a>
+        <a href="#solucoes" class="btn btn-ghost">Conhecer soluções</a>
+      </div>
+      <!--<div class="hero-stats">
+         <div class="hero-stat"><div class="num" data-count="120">0</div><div class="label">Projetos entregues</div></div>
+        <div class="hero-stat"><div class="num" data-count="15">0</div><div class="label">Anos de experiência</div></div>
+        <div class="hero-stat"><div class="num" data-count="42" data-suffix="%">0%</div><div class="label">Ganho médio de produtividade</div></div>
+      </div> -->
+    </div>
+
+    <div class="hero-art reveal is-visible reveal-delay-2" aria-hidden="true">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="panel panel-main glass">
+        <span style="font-family:var(--font-mono); font-size:12px; color:var(--text-2);">painel_operacional.status</span>
+        <div class="bars">
+          <div class="bar" style="height:40%;"></div>
+          <div class="bar" style="height:70%;"></div>
+          <div class="bar" style="height:55%;"></div>
+          <div class="bar" style="height:90%;"></div>
+          <div class="bar" style="height:65%;"></div>
+          <div class="bar" style="height:80%;"></div>
+        </div>
+      </div>
+      <div class="panel-badge badge-1">Automação ativa</div>
+      <div class="panel-badge badge-2">Integração ERP</div>
+      <div class="panel-badge badge-3">IA aplicada</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span>ROLAR</span><span class="line"></span></div>
+</section>
+
+<!-- ==========================================================================
+     PROBLEMA -> FLUXO
+     ========================================================================== -->
+<section class="section" id="problema">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">O diagnóstico</div>
+      <h2>Empresas ainda perdem tempo com isso.</h2>
+      <p>Todos os dias, times inteiros repetem tarefas que a tecnologia já resolveria em segundos.</p>
+    </div>
+
+    <div class="problem-wrap">
+      <div class="problem-list reveal">
+        <div class="problem-item"><span class="x">✕</span>Planilhas desatualizadas e sem integração</div>
+        <div class="problem-item"><span class="x">✕</span>Trabalho repetitivo tomando o dia da equipe</div>
+        <div class="problem-item"><span class="x">✕</span>Copiar e colar dados entre sistemas</div>
+        <div class="problem-item"><span class="x">✕</span>Processos manuais sujeitos a erro</div>
+        <div class="problem-item"><span class="x">✕</span>Relatórios feitos à mão, todo mês</div>
+        <div class="problem-item"><span class="x">✕</span>Ferramentas que não conversam entre si</div>
+      </div>
+
+      <div class="flow-col reveal reveal-delay-2">
+        <div class="flow-step glass">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--blue-400)" stroke-width="1.8"><path d="M4 4h16v4H4zM4 10h16v10H4z"/><path d="M8 14h8"/></svg>
+          Automação
+        </div>
+        <div class="flow-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+
+        <div class="flow-step glass">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--blue-400)" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+          ERP
+        </div>
+        <div class="flow-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+
+        <div class="flow-step glass">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--orange-400)" stroke-width="1.8"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg>
+          WhatsApp
+        </div>
+        <div class="flow-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+
+        <div class="flow-step glass">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--orange-400)" stroke-width="1.8"><path d="M4 20V10M12 20V4M20 20v-7"/></svg>
+          Dashboard
+        </div>
+        <div class="flow-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+
+        <div class="flow-step glass">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="var(--blue-400)" stroke-width="1.8"><path d="M6 2h9l3 3v17H6z"/><path d="M9 12h6M9 16h6"/></svg>
+          Relatório
+        </div>
+        <div class="flow-arrow"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M6 13l6 6 6-6"/></svg></div>
+
+        <div class="flow-step flow-final">Empresa mais produtiva</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SOLUÇÕES
+     ========================================================================== -->
+<section class="section" id="solucoes">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">O que fazemos</div>
+      <h2>Soluções pensadas para <span class="grad-text">escalar operações</span>.</h2>
+      <p>Da primeira landing page ao ecossistema completo de automação — cada solução nasce sob medida.</p>
+    </div>
+
+    <div class="solutions-grid">
+      <div class="sol-card glass reveal">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div>
+        <h3>Landing Pages</h3>
+        <p>Páginas de alta conversão, rápidas e com identidade visual premium.</p>
+      </div>
+      <div class="sol-card glass reveal reveal-delay-1">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Automação</h3>
+        <p>Eliminamos tarefas repetitivas e conectamos seus processos de ponta a ponta.</p>
+      </div>
+      <div class="sol-card glass reveal reveal-delay-2">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3>Sistemas Web</h3>
+        <p>Plataformas sob medida para operações internas, vendas e atendimento.</p>
+      </div>
+      <div class="sol-card glass reveal reveal-delay-3">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M4 19V5M4 19h16M8 15l3-4 3 3 4-6"/></svg></div>
+        <h3>Dashboards</h3>
+        <p>Indicadores em tempo real para decisões rápidas e baseadas em dados.</p>
+      </div>
+      <div class="sol-card glass reveal">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg></div>
+        <h3>Integrações ERP</h3>
+        <p>Conectamos seu ERP a WhatsApp, planilhas e sistemas de terceiros.</p>
+      </div>
+      <div class="sol-card glass reveal reveal-delay-1">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 2a5 5 0 0 0-5 5c0 2 1 3 1 5v2h8v-2c0-2 1-3 1-5a5 5 0 0 0-5-5z"/><path d="M9 21h6M10 18h4"/></svg></div>
+        <h3>Inteligência Artificial</h3>
+        <p>IA aplicada a atendimento, análise de dados e tomada de decisão.</p>
+      </div>
+      <div class="sol-card glass reveal reveal-delay-2">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M3 11l18-7-7 18-2-8-8-3z"/></svg></div>
+        <h3>Marketing Digital</h3>
+        <p>Estratégias que sustentam a operação, com tecnologia no centro.</p>
+      </div>
+      <div class="sol-card glass reveal reveal-delay-3">
+        <div class="ico-wrap"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"><path d="M12 3v18M5 8l7-5 7 5M5 8v10l7 5 7-5V8"/></svg></div>
+        <h3>Consultoria Tecnológica</h3>
+        <p>Diagnóstico e plano de ação para a transformação digital da sua empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SEGMENTOS
+     ========================================================================== -->
+<section class="section section--tight" id="segmentos">
+  <div class="container">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center; display:inline-flex; width:100%;">Quem atendemos</div>
+      <h2>Tecnologia para todo tipo de operação.</h2>
+    </div>
+  </div>
+
+  <div class="seg-marquee reveal">
+    <div class="seg-track" id="seg-track">
+      <!-- ESSE GRUPO SE REPETE 2X PARA O LOOP SER CONTÍNUO -->
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3v18M4 3h4v6H4M20 3v18M8 21V11h8v10"/></svg></div>
+        <span>Restaurantes</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l1-5h16l1 5M4 9h16v11H4zM9 13v4"/></svg></div>
+        <span>Lanchonetes</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l2-6h14l2 6M4 9v11h16V9M9 21v-6h6v6"/></svg></div>
+        <span>Mercados</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="8" width="15" height="9"/><path d="M16 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></div>
+        <span>Distribuidoras</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+        <span>Comércio</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6C19 16.4 12 21 12 21z"/></svg></div>
+        <span>Clínicas</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></div>
+        <span>Prestadores de Serviços</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg></div>
+        <span>Academias</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
+        <span>Escritórios de Advocacia</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4"/></svg></div>
+        <span>Óticas</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l1 4-3 2 3 4-3 2 2 8H9l2-8-3-2 3-4-3-2z"/></svg></div>
+        <span>Farmácias</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M12 22c-3 0-5-2-5-5 0-2 2-4 5-4s5 2 5 4c0 3-2 5-5 5z"/></svg></div>
+        <span>Pet Shops</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-6 9 6v11M9 21v-6h6v6"/></svg></div>
+        <span>Imobiliárias</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l6-4 6 4v14M9 21v-4h6v4"/></svg></div>
+        <span>Salões de Beleza</span>
+      </div>
+      <div class="seg-card glass">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V9l6-4 6 4v12M15 21V13l6-2v10"/></svg></div>
+        <span>Construtoras</span>
+      </div>
+
+      <!-- DUPLICATA DO GRUPO ACIMA (necessária para o loop contínuo — não remover) -->
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 3v18M4 3h4v6H4M20 3v18M8 21V11h8v10"/></svg></div>
+        <span>Restaurantes</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l1-5h16l1 5M4 9h16v11H4zM9 13v4"/></svg></div>
+        <span>Lanchonetes</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l2-6h14l2 6M4 9v11h16V9M9 21v-6h6v6"/></svg></div>
+        <span>Mercados</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1" y="8" width="15" height="9"/><path d="M16 11h4l3 3v3h-7z"/><circle cx="6" cy="19" r="1.6"/><circle cx="18" cy="19" r="1.6"/></svg></div>
+        <span>Distribuidoras</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M8 4v5"/></svg></div>
+        <span>Comércio</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.6-9.3-9A5.4 5.4 0 0 1 12 6a5.4 5.4 0 0 1 9.3 6C19 16.4 12 21 12 21z"/></svg></div>
+        <span>Clínicas</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/></svg></div>
+        <span>Prestadores de Serviços</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12l2.5 2.5L16 9"/></svg></div>
+        <span>Academias</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7z"/></svg></div>
+        <span>Escritórios de Advocacia</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="12" r="3"/><circle cx="17" cy="12" r="3"/><path d="M10 12h4"/></svg></div>
+        <span>Óticas</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 2h6l1 4-3 2 3 4-3 2 2 8H9l2-8-3-2 3-4-3-2z"/></svg></div>
+        <span>Farmácias</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/><path d="M12 22c-3 0-5-2-5-5 0-2 2-4 5-4s5 2 5 4c0 3-2 5-5 5z"/></svg></div>
+        <span>Pet Shops</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V10l9-6 9 6v11M9 21v-6h6v6"/></svg></div>
+        <span>Imobiliárias</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l6-4 6 4v14M9 21v-4h6v4"/></svg></div>
+        <span>Salões de Beleza</span>
+      </div>
+      <div class="seg-card glass" aria-hidden="true">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V9l6-4 6 4v12M15 21V13l6-2v10"/></svg></div>
+        <span>Construtoras</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     PORTFÓLIO
+     ========================================================================== -->
+<section class="section" id="portfolio">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Trabalhos recentes</div>
+      <h2>Projetos que já entregam resultado.</h2>
+      <p>Uma amostra do que desenvolvemos para clientes reais.</p>
+    </div>
+
+    <div class="portfolio-grid">
+      <div class="port-card reveal">
+        <img class="thumb" src="sistema_web.png" alt="Sistema web desenvolvido pela Essência Digital" loading="lazy">
+        <div class="port-overlay"><span class="port-tag">Sistema Web</span><h4>Painel de Gestão Interna</h4></div>
+      </div>
+      <div class="port-card reveal reveal-delay-1">
+        <img class="thumb" src="landingpage.png" alt="Landing page desenvolvida pela Essência Digital" loading="lazy">
+        <div class="port-overlay"><span class="port-tag">Landing Page</span><h4>Página de Conversão</h4></div>
+      </div>
+      <div class="port-card reveal reveal-delay-2">
+        <img class="thumb" src="painel_acompanhamento.png" alt="Dashboard de acompanhamento desenvolvido pela Essência Digital" loading="lazy">
+        <div class="port-overlay"><span class="port-tag">Dashboard</span><h4>Painel de Acompanhamento</h4></div>
+      </div>
+      <div class="port-card reveal">
+        <img class="thumb" src="whatsapp.png" alt="Automação de WhatsApp desenvolvida pela Essência Digital" loading="lazy">
+        <div class="port-overlay"><span class="port-tag">Automação</span><h4>Automação via WhatsApp</h4></div>
+      </div>
+      <div class="port-card reveal reveal-delay-1">
+        <img class="thumb" src="integracaoAI.png" alt="Integração com inteligência artificial desenvolvida pela Essência Digital" loading="lazy">
+        <div class="port-overlay"><span class="port-tag">Inteligência Artificial</span><h4>Integração com IA</h4></div>
+      </div>
+      <div class="port-card reveal reveal-delay-2">
+        <img class="thumb" src="celular.png" alt="Sistema de gestão desenvolvido pela Essência Digital" loading="lazy">
+        <div class="port-overlay"><span class="port-tag">Gestão</span><h4>Sistema na palma da mão</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     COMO TRABALHAMOS
+     ========================================================================== -->
+<section class="section section--tight" id="como-trabalhamos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Metodologia</div>
+      <h2>Como trabalhamos.</h2>
+      <p>Um processo claro, do diagnóstico ao suporte contínuo.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-num">1</div><div class="tl-body"><h3>Diagnóstico</h3><p>Mapeamos processos, gargalos e oportunidades reais de automação.</p></div></div>
+      <div class="tl-item reveal reveal-delay-1"><div class="tl-num">2</div><div class="tl-body"><h3>Planejamento</h3><p>Definimos escopo, arquitetura e prioridades com metas claras.</p></div></div>
+      <div class="tl-item reveal reveal-delay-2"><div class="tl-num">3</div><div class="tl-body"><h3>Desenvolvimento</h3><p>Construímos a solução com metodologia ágil e entregas contínuas.</p></div></div>
+      <div class="tl-item reveal reveal-delay-3"><div class="tl-num">4</div><div class="tl-body"><h3>Implantação</h3><p>Colocamos no ar com testes, ajustes finos e zero fricção.</p></div></div>
+      <div class="tl-item reveal reveal-delay-4"><div class="tl-num">5</div><div class="tl-body"><h3>Treinamento</h3><p>Capacitamos sua equipe para operar a solução com autonomia.</p></div></div>
+      <div class="tl-item reveal reveal-delay-5"><div class="tl-num">6</div><div class="tl-body"><h3>Suporte</h3><p>Acompanhamento contínuo para evoluir a solução junto com sua empresa.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     DIFERENCIAIS
+     ========================================================================== -->
+<section class="section" id="diferenciais">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Por que a Essência</div>
+      <h2>Tecnologia, estratégia e resultados para o seu negócio.</h2>
+    </div>
+
+    <div class="diff-grid">
+      <div class="diff-card glass reveal"><span class="n">01</span><h3>Visão Estratégica de Negócio</h3><p>Antes de desenvolver qualquer solução, entendemos seus processos para entregar tecnologia que realmente gera resultados.</p></div>
+      <div class="diff-card glass reveal reveal-delay-1"><span class="n">02</span><h3>Especialistas em ERP</h3><p>Profundo conhecimento de sistemas de gestão e suas integrações.</p></div>
+      <div class="diff-card glass reveal reveal-delay-2"><span class="n">03</span><h3>Desenvolvimento Sob Medida</h3><p>Nada de templates genéricos, cada projeto é construído sob medida.</p></div>
+      <div class="diff-card glass reveal reveal-delay-3"><span class="n">04</span><h3>Automação Inteligente</h3><p>Conectamos ERPs, planilhas, APIs, WhatsApp e outras ferramentas para automatizar seu fluxo de trabalho.</p></div>
+      <div class="diff-card glass reveal reveal-delay-4"><span class="n">05</span><h3>Foco em Resultados</h3><p>Cada funcionalidade é desenvolvida para resolver um problema real e gerar impacto no dia a dia da operação.</p></div>
+      <div class="diff-card glass reveal reveal-delay-5"><span class="n">06</span><h3>Consultoria &amp; Treinamento</h3><p>Acompanhamos sua equipe antes, durante e depois da entrega.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     CTA FINAL
+     ========================================================================== -->
+<section class="section cta-final" id="cta-final">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>Vamos transformar sua empresa?</h2>
+      <ul class="cta-list">
+        <li>Automatize processos</li>
+        <li>Elimine tarefas repetitivas</li>
+        <li>Ganhe produtividade</li>
+        <li>Cresça com tecnologia</li>
+      </ul>
+      <a href="https://wa.me/5565996833769?text=Olá!%20Gostaria%20de%20conhecer%20as%20soluções%20da%20Essência%20Digital%20e%20solicitar%20uma%20reunião." class="btn btn-primary" style="padding:16px 34px; font-size:15.5px;"><span class="ripple"></span>Solicitar Diagnóstico</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#main" class="nav-logo"><img src="logo.png" alt="Logotipo Essência Digital"><span>Essência <em>Digital</em></span></a>
+        <p>Software house especializada em automação, sistemas web e inteligência artificial para empresas de todos os tamanhos.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#portfolio">Portfólio</a></li>
+          <li><a href="#como-trabalhamos">Como trabalhamos</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5565996833769" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:essenciadigitalgestao@gmail.com">essenciadigitalgestao@gmail.com</a></li>
+          <li><a href="https://instagram.com/essencia__digital" target="_blank" rel="noopener">@essencia__digital</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Endereço</h4>
+        <ul>
+          <li style="color:var(--text-2);">Atendimento em todo o Brasil.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Essência Digital. Todos os direitos reservados.</span>
+      <div class="footer-social">
+        <a href="https://instagram.com/essencia__digital" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="https://wa.me/5565996833769" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.7-1.2A9 9 0 1 0 12 3z"/></svg></a>
+        <a href="mailto:essenciadigitalgestao@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Voltar ao topo">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+
+<script>
+/* ==========================================================================
+   ESSÊNCIA DIGITAL — INTERAÇÕES
+   ========================================================================== */
+(function(){
+  'use strict';
+
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---- 1. Scroll progress bar ---- */
+  var progressBar = document.getElementById('scroll-progress');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progressBar.style.width = scrolled + '%';
+  }
+
+  /* ---- 2. Navbar state on scroll ---- */
+  var navbar = document.getElementById('navbar');
+  var backToTop = document.getElementById('back-to-top');
+  function updateNav(){
+    var y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 40);
+    backToTop.classList.toggle('show', y > 600);
+  }
+
+  window.addEventListener('scroll', function(){
+    updateProgress();
+    updateNav();
+  }, { passive:true });
+  updateProgress(); updateNav();
+
+  backToTop.addEventListener('click', function(){
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+
+  /* ---- 3. Mobile menu ---- */
+  var toggle = document.getElementById('nav-toggle');
+  var mobileMenu = document.getElementById('mobile-menu');
+  toggle.addEventListener('click', function(){
+    var open = mobileMenu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  mobileMenu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      mobileMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    });
+  });
+
+  /* ---- 4. Cursor glow (desktop only) ---- */
+  var glow = document.getElementById('cursor-glow');
+  if (window.matchMedia('(pointer:fine)').matches){
+    window.addEventListener('mousemove', function(e){
+      glow.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px) translate(-50%,-50%)';
+    }, { passive:true });
+  } else {
+    glow.style.display = 'none';
+  }
+
+  /* ---- 5. Liquid button ripple position ---- */
+  document.querySelectorAll('.btn-primary').forEach(function(btn){
+    btn.addEventListener('mousemove', function(e){
+      var r = btn.getBoundingClientRect();
+      btn.style.setProperty('--x', (e.clientX - r.left) + 'px');
+      btn.style.setProperty('--y', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ---- 6. Scroll reveal (IntersectionObserver) ---- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.15, rootMargin:'0px 0px -60px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  /* ---- 7. Animated counters ---- */
+  var counters = document.querySelectorAll('[data-count]');
+  function animateCounter(el){
+    var target = parseInt(el.getAttribute('data-count'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1400;
+    var start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window){
+    var counterIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          animateCounter(entry.target);
+          counterIO.unobserve(entry.target);
+        }
+      });
+    }, { threshold:.6 });
+    counters.forEach(function(el){ counterIO.observe(el); });
+  }
+
+  /* ---- 8. Smooth scroll for in-page anchors ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if (id.length > 1){
+        var target = document.querySelector(id);
+        if (target){
+          e.preventDefault();
+          var offset = target.getBoundingClientRect().top + window.scrollY - 84;
+          window.scrollTo({ top: offset, behavior:'smooth' });
+        }
+      }
+    });
+  });
+
+  /* ---- 9. Hero canvas: subtle particle / signal network ---- */
+  var canvas = document.getElementById('hero-canvas');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W, H;
+
+  function resizeCanvas(){
+    W = canvas.width = canvas.offsetWidth * devicePixelRatio;
+    H = canvas.height = canvas.offsetHeight * devicePixelRatio;
+  }
+
+  function initParticles(){
+    var count = Math.min(70, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / 18000));
+    particles = [];
+    for (var i = 0; i < count; i++){
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - .5) * .35 * devicePixelRatio,
+        vy: (Math.random() - .5) * .35 * devicePixelRatio,
+        r: Math.random() * 1.6 + .6,
+        c: Math.random() > .5 ? '47,107,255' : '255,122,41'
+      });
+    }
+  }
+
+  function drawFrame(){
+    ctx.clearRect(0, 0, W, H);
+    for (var i = 0; i < particles.length; i++){
+      var p = particles[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * devicePixelRatio, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + p.c + ',.55)';
+      ctx.fill();
+
+      for (var j = i + 1; j < particles.length; j++){
+        var q = particles[j];
+        var dx = p.x - q.x, dy = p.y - q.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var maxDist = 130 * devicePixelRatio;
+        if (dist < maxDist){
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = 'rgba(120,150,255,' + (1 - dist / maxDist) * .18 + ')';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+    if (!reduceMotion) requestAnimationFrame(drawFrame);
+  }
+
+  function setupCanvas(){
+    resizeCanvas();
+    initParticles();
+    ctx.clearRect(0, 0, W, H);
+    drawFrame();
+  }
+
+  if (canvas){
+    setupCanvas();
+    window.addEventListener('resize', function(){
+      resizeCanvas();
+      initParticles();
+    });
+  }
+
+})();
+</script>
+</body>
+</html>
